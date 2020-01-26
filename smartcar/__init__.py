@@ -1,4 +1,5 @@
 from . import motor
+from . import servo
 
 def align_wheels():
     print("The car will be moved forward and then backward.")
@@ -30,5 +31,22 @@ def align_wheels():
     except KeyboardInterrupt:
         print("Exiting without configuring!")
 
+def servo-install():
+    servo = servo.Servo()
+    servo.pan(90)
+    servo.tilt(90)
+
 def main():
-    align_wheels()
+    if len(sys.argv) == 2:
+        if sys.argv[1] == "servo":
+            servo_install()
+        elif sys.argv[1] == "align":
+            align_wheels()
+    else:
+        usage()
+
+def usage():
+    print("Usage:  smartcar [Command]")
+    print("Commands:")
+    print("  servo              Set servos to 90 degree for installation")
+    print("  align              Align the steering ")
