@@ -31,7 +31,7 @@ def align_wheels():
     except KeyboardInterrupt:
         print("Exiting without configuring!")
 
-def servo-install():
+def servo_install():
     servo = servo.Servo()
     servo.pan(90)
     servo.tilt(90)
