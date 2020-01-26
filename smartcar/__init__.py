@@ -17,9 +17,9 @@ def align_wheels():
             print("Did the car veer left or right while moving forward?")
             ans = input("[R for right/L for left/S for more or less straight]: ")
             if ans.lower() == "l":
-                car.cali_right(10,10)
+                car.cali_right(50,50)
             elif ans.lower() == "r":
-                car.cali_left(10,10)
+                car.cali_left(50,50)
             elif ans.lower() == "s":
                 car.cali_ok()
                 print("Results written!  Front wheel calibration complete!")
