@@ -7,7 +7,7 @@ class Motor:
     def __init__(self):
         self.pwm = PCA9685(0x40, debug=True)
         self.pwm.setPWMFreq(50)
-        self._speed = 30
+        self._speed = 40
         self.db = FileDB()
         self.front_left_offset = self.db.get('front_left_offset',0)
         self.back_left_offset = self.db.get('back_left_offset',0)
