@@ -28,3 +28,6 @@ def align_wheels():
                 raise KeyboardInterrupt()
     except KeyboardInterrupt:
         print("Exiting without configuring!")
+
+def main():
+    align_wheels()
