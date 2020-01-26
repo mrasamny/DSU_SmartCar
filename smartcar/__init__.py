@@ -7,13 +7,14 @@ def align_wheels():
     ans = input("Place rover on the ground and press enter when ready!")
     import time
     car = motor.Motor()
+    car.speed=30
     try:
         while True:
             car.forward()
             time.sleep(2)
             car.backward()
             time.sleep(2)
-            car.stop()
+            car.brake()
             print("Did the car veer left or right while moving forward?")
             ans = input("[R for right/L for left/S for more or less straight]: ")
             if ans.lower() == "l":
