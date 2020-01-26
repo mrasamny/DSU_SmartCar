@@ -33,9 +33,9 @@ def align_wheels():
         print("Exiting without configuring!")
 
 def servo_install():
-    servo = servo.Servo()
-    servo.pan(90)
-    servo.tilt(90)
+    s = servo.Servo()
+    s.pan(90)
+    s.tilt(90)
 
 def main():
     if len(sys.argv) == 2:
