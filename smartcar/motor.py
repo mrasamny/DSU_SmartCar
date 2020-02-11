@@ -13,6 +13,7 @@ class Motor:
         self.back_left_offset = self.db.get('back_left_offset',0)
         self.front_right_offset = self.db.get('front_right_offset',0)
         self.back_right_offset = self.db.get('back_right_offset',0)
+        self.forward_offset = self.db.get('forward',1)
         self.wheel_duty = [0,0,0,0]
     
     def cali_left(self,front_offset,back_offset):
@@ -136,7 +137,8 @@ class Motor:
         duty = self.get_duty(self.speed)
         (duty1,duty2,duty3,duty4) = self.adjust_duty(duty,duty,duty,duty)
         #print('Duty: {} - {} - {} - {}'.format(duty1,duty2,duty3,duty4));
-        self.set_motor_model(duty1,duty2,duty3,duty4)
+        self.set_motor_model(self.forward_offset*duty1,self.forward_offset*duty2, \
+                             self.forward_offset*duty3,self.forward_offset*duty4)
 
     def backward(self):
         '''
@@ -144,7 +146,8 @@ class Motor:
         '''
         duty = self.get_duty(self.speed)
         (duty1,duty2,duty3,duty4) = self.adjust_duty(duty,duty,duty,duty)
-        self.set_motor_model(-duty1,-duty2,-duty3,-duty4)
+        self.set_motor_model(-self.forward_offset*duty1,-self.forward_offset*duty2, \
+                             -self.forward_offset*duty3,-self.forward_offset*duty4)
 
     # Vo = V     (eq. 1)
     # Vi = V-v   (eq. 2)
