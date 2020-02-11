@@ -24,11 +24,15 @@ class Motor:
         self.front_right_offset -= front_offset
         self.back_right_offset -= back_offset
         
+    def cali_flip_forward(self):
+        self.forward_offset = -1*self.forward_offset
+        
     def cali_ok(self):
         self.db.set('front_left_offset',self.front_left_offset)
         self.db.set('back_left_offset',self.back_left_offset)
         self.db.set('front_right_offset',self.front_right_offset)
         self.db.set('back_right_offset',self.back_right_offset)
+        self.db.set('forward',self.forward_offset)
         
     def adjust_duty(self,duty1,duty2,duty3,duty4):
         duty1 += self.front_left_offset

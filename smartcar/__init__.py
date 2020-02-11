@@ -36,13 +36,31 @@ def servo_install():
     s = servo.Servo()
     s.pan(90)
     s.tilt(90)
-
+    
+def set_forwardness():
+    print("The car will be moved forward.")
+    ans = input("Place rover on the ground and press enter when ready!")
+    import time
+    car = motor.Motor()
+    car.speed=30
+    car.forward()
+    time.sleep(2)
+    car.stop()
+    print("Did the car move forward?")
+    ans = input("[y/Y/Yes or n/N/No]: ")
+    if ans.lower() in ('n','no'):
+        car.cali_flip_forward()
+    car.cali_ok()
+    print("Results written!  Forwardness configured!")
+    
 def main():
     if len(sys.argv) == 2:
         if sys.argv[1] == "servo":
             servo_install()
         elif sys.argv[1] == "align":
             align_wheels()
+        elif sys.argv[1] == "forwardness"
+            set_forwardness()
     else:
         usage()
 
@@ -51,3 +69,4 @@ def usage():
     print("Commands:")
     print("  servo              Set servos to 90 degree for installation")
     print("  align              Align the steering ")
+    print("  forwardnes         Check if car moves forward on a forward command ")
