@@ -59,7 +59,7 @@ def main():
             servo_install()
         elif sys.argv[1] == "align":
             align_wheels()
-        elif sys.argv[1] == "forwardness"
+        elif sys.argv[1] == "forwardness":
             set_forwardness()
     else:
         usage()
