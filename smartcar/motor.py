@@ -199,7 +199,10 @@ class Motor:
         internal_wheel_duty = self.get_duty(internal_wheel_speed)
         #print(internal_wheel_speed,' <---> ',internal_wheel_duty)
         #(duty1,duty2,duty3,duty4) = self.adjust_duty(internal_wheel_duty,internal_wheel_duty,duty,duty)
-        (duty1,duty2,duty3,duty4) = (internal_wheel_duty,internal_wheel_duty,duty,duty)
+        (duty1,duty2,duty3,duty4) = (self.forward_offset*internal_wheel_duty,
+                                     self.forward_offset*internal_wheel_duty,
+                                     self.forward_offset*duty,
+                                     self.forward_offset*duty)
         #print('Duty: {} - {} - {} - {}'.format(duty1,duty2,duty3,duty4))
         self.set_motor_model(duty1,duty2,duty3,duty4)
 
@@ -220,7 +223,10 @@ class Motor:
         internal_wheel_duty = self.get_duty(internal_wheel_speed)
         #print(internal_wheel_speed,' <---> ',internal_wheel_duty)
         #(duty1,duty2,duty3,duty4) = self.adjust_duty(duty,duty,internal_wheel_duty,internal_wheel_duty)
-        (duty1,duty2,duty3,duty4) = (duty,duty,internal_wheel_duty,internal_wheel_duty)
+        (duty1,duty2,duty3,duty4) = (self.forward_offset*duty,
+                                     self.forward_offset*duty,
+                                     self.forward_offset*internal_wheel_duty,
+                                     self.forward_offset*internal_wheel_duty)
         #print('Duty: {} - {} - {} - {}'.format(duty1,duty2,duty3,duty4))
         self.set_motor_model(duty1,duty2,duty3,duty4)
 
